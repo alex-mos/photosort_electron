@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
+  </head>
+  <body>
+    <form>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="file" id="input-src" webkitdirectory directory>
+        <label class="mdl-textfield__label" for="input-src"></label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="file" id="input-dest" webkitdirectory directory>
+        <label class="mdl-textfield__label" for="input-dest">Destination path</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield">
+        <textarea class="mdl-textfield__input" type="text" rows="10" id="photonumbers" ></textarea>
+        <label class="mdl-textfield__label" for="photonumbers">Photo numbers</label>
+      </div>
+
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Copy
+      </button>
+
+    </form>
+
+    <script src="node_modules/material-design-lite/material.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
