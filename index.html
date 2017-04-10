@@ -13,19 +13,31 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
           <input class="mdl-textfield__input" placeholder="source folder" type="text" id="input-src-name" readonly/>
           <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-            <i class="material-icons">attach_file</i><input type="file" id="input-src" webkitdirectory directory>
+            <i class="material-icons">
+              <svg fill="#aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </i>
+            <input type="file" id="input-src" webkitdirectory directory>
           </div>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
           <input class="mdl-textfield__input" placeholder="destination folder" type="text" id="input-dest-name" readonly/>
           <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-            <i class="material-icons">attach_file</i><input type="file" id="input-dest" webkitdirectory directory>
+            <i class="material-icons">
+              <svg fill="#aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </i>
+            <input type="file" id="input-dest" webkitdirectory directory>
           </div>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield clear">
-          <textarea class="mdl-textfield__input" type="text" rows="25" id="photonumbers" ></textarea>
+          <textarea class="mdl-textfield__input" type="text" rows="20" id="photonumbers" ></textarea>
           <label class="mdl-textfield__label" for="photonumbers">Photo numbers</label>
         </div>
 

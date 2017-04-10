@@ -72,7 +72,7 @@ document.querySelector('#input-src').onchange = function(e) {
 }
 
 document.querySelector('#input-dest').onchange = function(e) {
-  document.querySelector('#input-src-name').value = e.target.files[0].name
+  document.querySelector('#input-dest-name').value = e.target.files[0].name
   dest = e.target.files[0].path
 }
 

@@ -1,5 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .mdl-layout {
   padding: 10px 20px;
+}
+
+.mdl-textfield {
+  width: 400px;
 }
 
 .clear {
@@ -7,14 +15,11 @@
   clear: both;
 }
 
-.mdl-textfield {
-  width: 400px;
-}
-
 .submit {
-  float: right;
+  /*float: right;*/
 }
 
+/* custom file input */
 .mdl-button--file input {
     cursor: pointer;
     height: 100%;
@@ -25,7 +30,6 @@
     width: 400px;
     z-index: 4;
 }
-
 
 .mdl-textfield--file .mdl-textfield__input {
     box-sizing: border-box;
