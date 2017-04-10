@@ -24,7 +24,11 @@ const nameBuild = (num) => {
       num = '0' + num
       break
     default:
-      console.log(`некорректный номер фотографии: ${num}`)
+      swal({
+        type: 'error',
+        title: 'Ошибка',
+        text: `Некорректный номер фотографии: ${num}`
+      })
   }
 
   return `DSC${num}.JPG`
@@ -51,13 +55,21 @@ const cp = (fileName) => {
 const main = (fileNames) => {
   fs.access(src, fs.constants.R_OK, (err) => {
     if (err) {
-      console.log('невозможно прочитать исходные фотографии')
+      swal({
+        type: 'error',
+        title: 'Ошибка',
+        text: 'Невозможно прочитать исходные фотографии'
+      })
     } else {
       fs.access(dest, fs.constants.W_OK, (err) => {
         if (err) {
-          console.log('невозможно записать фотографии')
+          swal({
+            type: 'error',
+            title: 'Ошибка',
+            text: 'Невозможно записать фотографии'
+          })
         } else {
-          // копирование файлов по очереди  
+          // копирование файлов по очереди
           fileNames.map(fileName => cp(fileName))
         }
       })
@@ -85,5 +97,13 @@ document.querySelector('button').onclick = function(e) {
   // массив номеров - в массив названий файлов
   let fileNames = numbersArr.map(num => nameBuild(num)).sort()
 
-  main(fileNames)
+  if (!src || !dest) {
+    swal({
+      type: 'error',
+      title: 'Ошибка',
+      text: 'Вы забыли указать папки с фотографиями'
+    })
+  } else {
+    main(fileNames)
+  }
 }
