@@ -5,7 +5,7 @@ let src, dest
 
 // преобразует строку с номерами в массив
 const numbersToArr = (str) => {
-  return str.split('\n').filter(num => num !== '')
+  return str.split('\n').filter(item => item !== '').map(item => item.trim())
 }
 
 // возвращает имя файла по номеру
@@ -102,6 +102,12 @@ document.querySelector('button').onclick = function(e) {
       type: 'error',
       title: 'Ошибка',
       text: 'Вы забыли указать папки с фотографиями'
+    })
+  } else if (!numbersStr) {
+    swal({
+      type: 'error',
+      title: 'Ошибка',
+      text: 'Вы забыли указать номера фотографий'
     })
   } else {
     main(fileNames)
