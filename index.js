@@ -34,7 +34,8 @@ const nameBuild = (num) => {
   return `DSC${num}.JPG`
 }
 
-let filesCounter = 0 // счётчик файлов, которые@
+let filesCounter = 0 // счётчик файлов, которые
+let report = '' // финальный отчёт о копировании
 
 // проверка доступа и корректности путей
 const main = (fileNames) => {
@@ -56,17 +57,16 @@ const main = (fileNames) => {
         } else {
           // копирование файлов по очереди
           fileNames.forEach((fileName, index, array) => {
-
             fs.access(path.join(src, fileName), fs.constants.R_OK, (err) => {
               if (err) {
-                console.log(`${fileName}: не найден`)
+                report += `${fileName}: не найден <br>`
                 finalReport()
               } else {
                 fs.copy(path.join(src, fileName), path.join(dest, fileName), (err) => {
                   if (err) {
                     throw err
                   } else {
-                    console.log(`${fileName}: ок`)
+                    report += `${fileName}: ок <br>`
                     finalReport()
                   }
                 })
@@ -76,9 +76,13 @@ const main = (fileNames) => {
             function finalReport() {
               filesCounter++
               if (filesCounter === array.length) {
-                // console.log(filesCounter)
-                // console.log(array.length)
-                  console.log(`Готово`)
+                // console.log(report)
+                $.magnificPopup.open({
+                  items: {
+                      src: `<div class="white-popup">${report}</div>`,
+                      type: 'inline'
+                  }
+                }, 0)
               }
             }
           })
@@ -100,7 +104,7 @@ document.querySelector('#input-dest').onchange = function(e) {
 }
 
 // запуск программы по нажатию на кнопку Copy
-document.querySelector('button').onclick = function(e) {
+document.querySelector('.submit').onclick = function(e) {
   e.preventDefault()
   let numbersStr = document.querySelector('#photonumbers').value
   // преобразуем строку с номерами в массив

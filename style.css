@@ -1,21 +1,35 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .mdl-layout {
-  padding: 10px 20px;
+    padding: 10px 20px;
 }
 
 .mdl-textfield {
-  width: 400px;
+    width: 400px;
 }
 
 .clear {
-  display: block;
-  clear: both;
+    display: block;
+    clear: both;
 }
 
+
+/* magnific popup */
+
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+
 /* custom file input */
+
 .mdl-button--file input {
     cursor: pointer;
     height: 100%;
