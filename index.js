@@ -34,22 +34,7 @@ const nameBuild = (num) => {
   return `DSC${num}.JPG`
 }
 
-// копирует файл
-const cp = (fileName) => {
-  fs.access(path.join(src, fileName), fs.constants.R_OK, (err) => {
-    if (err) {
-      console.log(`${fileName}: не найден`)
-    } else {
-      fs.copy(path.join(src, fileName), path.join(dest, fileName), (err) => {
-        if (err) {
-          throw err
-        } else {
-          console.log(`${fileName}: ок`)
-        }
-      })
-    }
-  })
-}
+let filesCounter = 0 // счётчик файлов, которые@
 
 // проверка доступа и корректности путей
 const main = (fileNames) => {
@@ -70,7 +55,33 @@ const main = (fileNames) => {
           })
         } else {
           // копирование файлов по очереди
-          fileNames.map(fileName => cp(fileName))
+          fileNames.forEach((fileName, index, array) => {
+
+            fs.access(path.join(src, fileName), fs.constants.R_OK, (err) => {
+              if (err) {
+                console.log(`${fileName}: не найден`)
+                finalReport()
+              } else {
+                fs.copy(path.join(src, fileName), path.join(dest, fileName), (err) => {
+                  if (err) {
+                    throw err
+                  } else {
+                    console.log(`${fileName}: ок`)
+                    finalReport()
+                  }
+                })
+              }
+            })
+
+            function finalReport() {
+              filesCounter++
+              if (filesCounter === array.length) {
+                // console.log(filesCounter)
+                // console.log(array.length)
+                  console.log(`Готово`)
+              }
+            }
+          })
         }
       })
     }

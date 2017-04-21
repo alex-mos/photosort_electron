@@ -15,10 +15,6 @@
   clear: both;
 }
 
-.submit {
-  /*float: right;*/
-}
-
 /* custom file input */
 .mdl-button--file input {
     cursor: pointer;
