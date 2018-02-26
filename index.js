@@ -3,13 +3,11 @@ const path = require('path')
 
 let src, dest
 
-// преобразует строку с номерами в массив
+// преобразует содержимое текстэрии с номерами в массив,
+// удаляет лишние пробелы и нули в номерах
 const numbersToArr = (str) => {
-  return str.split('\n').filter(item => item !== '').map(item => item.trim())
+  return str.split('\n').filter(item => item !== '').map(item => item.trim()).map(item => String(Number(item)))
 }
-
-// Обрезает нули в начале номера
-const trimZeroes = num => String(Number(num))
 
 // возвращает имя файла по номеру
 const nameBuild = (num) => {
@@ -37,7 +35,7 @@ const nameBuild = (num) => {
   return `DSC${num}.JPG`
 }
 
-let filesCounter = 0 // счётчик файлов, которые
+let filesCounter = 0 // счётчик обработанных файлов из списка
 let report = '' // финальный отчёт о копировании
 
 // проверка доступа и корректности путей
@@ -81,10 +79,13 @@ const main = (fileNames) => {
               if (filesCounter === array.length) {
                 $.magnificPopup.open({
                   items: {
-                      src: `<div class="white-popup">${report}</div>`,
-                      type: 'inline'
+                    src: `<div class="white-popup">${report}</div>`,
+                    type: 'inline'
                   }
                 }, 0)
+                // обнуление счетчика файлов и отчёта, чтобы можно было копировать другой набор файлов
+                filesCounter = 0
+                report = ''
               }
             }
           })
@@ -112,7 +113,7 @@ document.querySelector('.submit').onclick = function(e) {
   // преобразуем строку с номерами в массив
   let numbersArr = numbersToArr(numbersStr)
   // массив номеров - в массив названий файлов
-  let fileNames = numbersArr.map(num => trimZeroes(num)).map(num => nameBuild(num)).sort()
+  let fileNames = numbersArr.map(num => nameBuild(num)).sort()
 
   if (!src || !dest) {
     swal({
