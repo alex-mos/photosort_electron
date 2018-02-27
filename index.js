@@ -1,7 +1,9 @@
 const fs = require('fs-extra')
 const path = require('path')
 
-let src, dest
+let src = [] // исходных папок может быть несолько
+let additionalSrcCount = 0 // счетчик добавленных полей выбора исходной папки
+let dest = '' // путь к папке, в которую будут скопированы файлы
 
 // преобразует содержимое текстэрии с номерами в массив,
 // удаляет лишние пробелы и нули в номерах
@@ -60,14 +62,14 @@ const main = (fileNames) => {
           fileNames.forEach((fileName, index, array) => {
             fs.access(path.join(src, fileName), fs.constants.R_OK, (err) => {
               if (err) {
-                report += `${fileName}: не найден <br>`
+                report += `❌ ${fileName}: не найден <br>`
                 finalReport()
               } else {
                 fs.copy(path.join(src, fileName), path.join(dest, fileName), (err) => {
                   if (err) {
                     throw err
                   } else {
-                    report += `${fileName}: ок <br>`
+                    report += `✅ ${fileName}<br>`
                     finalReport()
                   }
                 })
@@ -95,12 +97,28 @@ const main = (fileNames) => {
   })
 }
 
-// запись адресов папок
-document.querySelector('#input-src').onchange = function(e) {
-  document.querySelector('#input-src-name').value = e.target.files[0].name
-  src = e.target.files[0].path
-}
+// запись адресов папок исходных папок
+$('.input-src').on('change', function(e) {
+  let srcInput = $(this).data('src') // порядковый номер инпута
+  // запись названия папки в текстовый инпут
+  $(`.src-select-${srcInput} .input-src-name`)[0].value = e.target.files[0].name
+  let newSrcPath = e.target.files[0].path
+  src[srcInput] = (newSrcPath)
 
+  console.log(src);
+})
+
+// добавление блока выбора исходной папки
+$('.js-add-src-btn').on('click', function() {
+  console.log('todo: реализовать добавление инпута');
+})
+
+// удаление блока выбора исходной папки
+$('.js-remove-src-btn').on('click', function() {
+  console.log('todo: реализовать удаление инпута');
+})
+
+// запись адреса папки назначения
 document.querySelector('#input-dest').onchange = function(e) {
   document.querySelector('#input-dest-name').value = e.target.files[0].name
   dest = e.target.files[0].path
@@ -115,7 +133,7 @@ document.querySelector('.submit').onclick = function(e) {
   // массив номеров - в массив названий файлов
   let fileNames = numbersArr.map(num => nameBuild(num)).sort()
 
-  if (!src || !dest) {
+  if (!src.length || !dest) {
     swal({
       type: 'error',
       title: 'Ошибка',

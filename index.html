@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PhotoShoot</title>
+    <title>PhotoSort</title>
     <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
     <link rel="stylesheet" href="node_modules/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" href="node_modules/magnific-popup/dist/magnific-popup.css">
@@ -12,8 +12,8 @@
 
     <div class="mdl-layout mdl-js-layout">
       <form>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-          <input class="mdl-textfield__input" placeholder="source folder" type="text" id="input-src-name" readonly/>
+        <div class="mdl-textfield mdl-textfield_src mdl-js-textfield mdl-textfield--file js-src-select src-select-0">
+          <input class="mdl-textfield__input input-src-name" placeholder="source folder" type="text" readonly/>
           <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
             <i class="material-icons">
               <svg fill="#aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -21,9 +21,53 @@
                 <path d="M0 0h24v24H0z" fill="none"/>
               </svg>
             </i>
-            <input type="file" id="input-src" webkitdirectory directory>
+            <input type="file" class="input-src" data-src="0" webkitdirectory directory>
           </div>
+
+          <!--<div class="mdl-button mdl-button&#45;&#45;primary mdl-button&#45;&#45;icon mdl-button&#45;&#45;add js-add-src-btn">-->
+            <!--+-->
+          <!--</div>-->
         </div>
+
+
+        <!-- Дополнительные поля выбора исходных папок временно захардкожены. Сделать динамическое добавление и удаление -->
+        <div class="mdl-textfield mdl-textfield_src mdl-js-textfield mdl-textfield--file js-src-select src-select-1">
+          <input class="mdl-textfield__input input-src-name" placeholder="source folder 2" type="text" readonly/>
+          <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+            <i class="material-icons">
+              <svg fill="#aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </i>
+            <input type="file" class="input-src" data-src="1" webkitdirectory directory>
+          </div>
+
+          <!--<div class="mdl-button mdl-button&#45;&#45;primary mdl-button&#45;&#45;icon mdl-button&#45;&#45;remove js-remove-src-btn">-->
+            <!-- - -->
+          <!--</div>-->
+        </div>
+
+        <div class="mdl-textfield mdl-textfield_src mdl-js-textfield mdl-textfield--file js-src-select src-select-2">
+          <input class="mdl-textfield__input input-src-name" placeholder="source folder 3" type="text" readonly/>
+          <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+            <i class="material-icons">
+              <svg fill="#aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </i>
+            <input type="file" class="input-src" data-src="2" webkitdirectory directory>
+          </div>
+
+          <!--<div class="mdl-button mdl-button&#45;&#45;primary mdl-button&#45;&#45;icon mdl-button&#45;&#45;remove js-remove-src-btn">-->
+            <!-- - -->
+          <!--</div>-->
+        </div>
+        <!-- / Дополнительные поля выбора исходных папок временно захардкожены. Сделать динамическое добавление и удаление -->
+
+
+
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
           <input class="mdl-textfield__input" placeholder="destination folder" type="text" id="input-dest-name" readonly/>

@@ -10,6 +10,10 @@
     width: 400px;
 }
 
+.mdl-textfield_src {
+    width: 360px;
+}
+
 .clear {
     display: block;
     clear: both;
@@ -48,4 +52,16 @@
 
 .mdl-textfield--file .mdl-button--file {
     right: 0;
+}
+
+.mdl-textfield--file .mdl-button--add {
+    right: -40px;
+    color: #aaa;
+    border: 1px #eee solid;
+}
+
+.mdl-textfield--file .mdl-button--remove {
+    right: -40px;
+    color: #aaa;
+    border: 1px #eee solid;
 }

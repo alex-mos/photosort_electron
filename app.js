@@ -92,7 +92,7 @@ electron.app.on('ready', function () {
   Menu.setApplicationMenu(menu)
   let mainWindow = new electron.BrowserWindow({
     width: 440,
-    height: 630
+    height: 760
   })
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 })
