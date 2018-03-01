@@ -60,14 +60,14 @@ const main = (fileNames) => {
           fileNames.forEach((fileName, index, array) => {
             fs.access(path.join(src, fileName), fs.constants.R_OK, (err) => {
               if (err) {
-                report += `${fileName}: не найден <br>`
+                report += `❌ ${fileName}: не найден <br>`
                 finalReport()
               } else {
                 fs.copy(path.join(src, fileName), path.join(dest, fileName), (err) => {
                   if (err) {
                     throw err
                   } else {
-                    report += `${fileName}: ок <br>`
+                    report += `✅ ${fileName}<br>`
                     finalReport()
                   }
                 })

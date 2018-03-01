@@ -1,5 +1,5 @@
 {
-  "name": "photoShoot",
+  "name": "photoSort",
   "version": "0.0.1",
   "description": "Программа для копирования фотографий по списку номеров из одной папки в другую",
   "main": "app.js",
