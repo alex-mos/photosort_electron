@@ -1,10 +1,11 @@
 {
-  "name": "photoSort",
+  "name": "photosort",
   "version": "0.0.1",
   "description": "Программа для копирования фотографий по списку номеров из одной папки в другую",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "author": "alexander.mospan@gmail.com",
   "license": "ISC",
@@ -13,5 +14,16 @@
     "magnific-popup": "^1.1.0",
     "material-design-lite": "^1.3.0",
     "sweetalert": "^1.1.3"
-  }
+  },
+  "devDependencies": {
+    "electron": "^5",
+    "electron-builder": "^22.7.0"
+  },
+  "build": {
+    "appId": "photosort",
+    "mac": {
+      "category": "public.app-category.utilities"
+    }
+  },
+  "electronVersion": "5.0.13"
 }
